@@ -28,7 +28,9 @@ class ViewController: UIViewController {
 // MARK: - Buttons
     
     @IBAction func addAdressTaped(_ sender: UIButton) {
-        print("add tap")
+        alertAddAdress(title: "Add", placeholder: "Enter adress") { text in
+            print(text)
+        }
     }
     
     @IBAction func routeTapped(_ sender: UIButton) {
