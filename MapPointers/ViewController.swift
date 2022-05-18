@@ -44,7 +44,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func resetTapped(_ sender: UIButton) {
-        print("reset tap")
+        map.removeOverlays(map.overlays)
+        map.removeAnnotations(map.annotations)
+        annotationArray = [MKPointAnnotation]()
+        routeButton.isHidden = true
+        resetButton.isHidden = true
     }
     
 // MARK: - Placemarks logic
