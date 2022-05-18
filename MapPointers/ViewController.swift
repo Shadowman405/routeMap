@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        map.delegate = self
         
         routeButton.isHidden = true
         resetButton.isHidden = true
@@ -36,16 +37,21 @@ class ViewController: UIViewController {
     }
     
     @IBAction func routeTapped(_ sender: UIButton) {
-        print("route tap")
+        for index in 0...annotationArray.count - 2 {
+            createDirectionRequest(startCoordinate: annotationArray[index].coordinate, destinationCoordinate: annotationArray[index + 1].coordinate)
+        }
+        map.showAnnotations(annotationArray, animated: true)
     }
     
     @IBAction func resetTapped(_ sender: UIButton) {
         print("reset tap")
     }
     
+// MARK: - Placemarks logic
+    
     private func setupPlacemark(adressPlace: String) {
         let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString("Минск, Притыцкого 78") { [self] placemarks, error in
+        geocoder.geocodeAddressString(adressPlace) { [self] placemarks, error in
             if let error = error {
                 print(error.localizedDescription)
                 alertError(title: "Error", message: "Server unreacheable, try later")
@@ -70,5 +76,47 @@ class ViewController: UIViewController {
             map.showAnnotations(annotationArray, animated: true)
         }
     }
+    
+// MARK: - Routes logic
+    
+    private func createDirectionRequest(startCoordinate: CLLocationCoordinate2D, destinationCoordinate: CLLocationCoordinate2D) {
+        
+        let startLocation = MKPlacemark(coordinate: startCoordinate)
+        let destinationLocation = MKPlacemark(coordinate: destinationCoordinate)
+        
+        let request = MKDirections.Request()
+        request.source = MKMapItem(placemark: startLocation)
+        request.destination = MKMapItem(placemark: destinationLocation)
+        request.transportType = .walking
+        request.requestsAlternateRoutes = true
+        
+        let direction = MKDirections(request: request)
+        direction.calculate { response, error in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            
+            guard let response = response else {
+                self.alertError(title: "Error", message: "Route is unvailable")
+                return
+            }
+            
+            var minRoute = response.routes[0]
+            for route in response.routes {
+                minRoute = (route.distance < minRoute.distance ) ? route : minRoute
+            }
+            
+            self.map.addOverlay(minRoute.polyline)
+        }
+    }
+    
 }
 
+extension ViewController : MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay as! MKPolyline)
+        renderer.strokeColor = .green
+        return renderer
+    }
+}
