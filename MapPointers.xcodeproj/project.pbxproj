@@ -17,6 +17,7 @@
 		BF4277C22834322800E21858 /* MapPointersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4277C12834322800E21858 /* MapPointersUITests.swift */; };
 		BF4277C42834322800E21858 /* MapPointersUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4277C32834322800E21858 /* MapPointersUITestsLaunchTests.swift */; };
 		BF4277D128343B8200E21858 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4277D028343B8200E21858 /* Alert.swift */; };
+		BF4277D32835658C00E21858 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4277D22835658C00E21858 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		BF4277C12834322800E21858 /* MapPointersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPointersUITests.swift; sourceTree = "<group>"; };
 		BF4277C32834322800E21858 /* MapPointersUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPointersUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		BF4277D028343B8200E21858 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		BF4277D22835658C00E21858 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				BF4277A92834322700E21858 /* Assets.xcassets */,
 				BF4277AB2834322700E21858 /* LaunchScreen.storyboard */,
 				BF4277AE2834322700E21858 /* Info.plist */,
+				BF4277D22835658C00E21858 /* Extensions.swift */,
 			);
 			path = MapPointers;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF4277D32835658C00E21858 /* Extensions.swift in Sources */,
 				BF4277A52834322500E21858 /* ViewController.swift in Sources */,
 				BF4277A12834322500E21858 /* AppDelegate.swift in Sources */,
 				BF4277D128343B8200E21858 /* Alert.swift in Sources */,
