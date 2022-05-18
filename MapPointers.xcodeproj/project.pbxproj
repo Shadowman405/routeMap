@@ -104,11 +104,11 @@
 				BF4277A02834322500E21858 /* AppDelegate.swift */,
 				BF4277A22834322500E21858 /* SceneDelegate.swift */,
 				BF4277A42834322500E21858 /* ViewController.swift */,
+				BF4277D028343B8200E21858 /* Alert.swift */,
 				BF4277A62834322500E21858 /* Main.storyboard */,
 				BF4277A92834322700E21858 /* Assets.xcassets */,
 				BF4277AB2834322700E21858 /* LaunchScreen.storyboard */,
 				BF4277AE2834322700E21858 /* Info.plist */,
-				BF4277D028343B8200E21858 /* Alert.swift */,
 			);
 			path = MapPointers;
 			sourceTree = "<group>";
