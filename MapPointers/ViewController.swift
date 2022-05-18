@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var map: MKMapView!
     @IBOutlet weak var routeButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var addAdressButton: UIButton!
     
     var annotationArray = [MKPointAnnotation]()
     
@@ -24,7 +25,13 @@ class ViewController: UIViewController {
         
         routeButton.isHidden = true
         resetButton.isHidden = true
-
+        setupUI()
+    }
+    
+    private func setupUI() {
+        resetButton.layer.cornerRadius = 15
+        addAdressButton.layer.cornerRadius = 15
+        routeButton.layer.cornerRadius = 15
     }
     
     
@@ -114,8 +121,9 @@ class ViewController: UIViewController {
             self.map.addOverlay(minRoute.polyline)
         }
     }
-    
 }
+
+// MARK: - Extension
 
 extension ViewController : MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
